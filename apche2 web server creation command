@@ -1,0 +1,10 @@
+sudo su
+apt update -y
+apt install apche2 -y
+apche2 -version
+systemctl status apache2
+apche2 -I
+#### to edit linux webpage or custom
+vi /var/www/html/index.html
+press i # for edition of name and all
+esc -- :wq to save and exit
