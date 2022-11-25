@@ -1,0 +1,8 @@
+gsutil mb -b on -l us-east1 gs://amitbucket001 ### to make bucket
+gsutil ls gs://amitbucket001  # to see contents of bucket
+gsutil iam ch allusers:objectViewer gs://amitbucket001 # make it public access
+gsutil rm -r gs://amitbucket001 # remove object in storage 
+###########################################################
+Versioning
+gsutil versioning set on gs://amitbucket001       ## enable versioning.
+gsutil ls -a gs://amitbucket001                   ## to check version
