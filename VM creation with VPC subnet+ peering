@@ -1,0 +1,5 @@
+gcloud compute instances create myvm --zone=asia-east1-a --machine-type=n1-standard-1 --subnet=subnet-eastassia1  ## create VM under VPC subnet.
+gcloud compute networks describe my-custom-vpc ## to check VPC status
+gcloud compute networks update my-custom-vpc --bgp-routing-mode=REGIONAL  ## UPDATE OR CHANGE IN vpc
+----------------------
+peering
