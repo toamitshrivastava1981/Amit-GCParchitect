@@ -1,0 +1,23 @@
+gcloud compute networks create my-vpc --project=my-learning-368417 --description=1st\ vpc\ connection --subnet-mode=auto --mtu=1460 --bgp-routing-mode=global
+
+gcloud compute firewall-rules create my-vpc-allow-icmp --project=my-learning-368417 --network=projects/my-learning-368417/global/networks/my-vpc --description=Allows\ ICMP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=icmp
+
+gcloud compute firewall-rules create my-vpc-allow-rdp --project=my-learning-368417 --network=projects/my-learning-368417/global/networks/my-vpc --description=Allows\ RDP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network\ using\ port\ 3389. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=tcp:3389
+
+gcloud compute firewall-rules create my-vpc-allow-ssh --project=my-learning-368417 --network=projects/my-learning-368417/global/networks/my-vpc --description=Allows\ TCP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network\ using\ port\ 22. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=tcp:22
+
+------------
+Custom VPC command
+--------
+
+gcloud compute networks create my-custom-vpc --project=my-learning-368417 --subnet-mode=custom --mtu=1500 --bgp-routing-mode=global
+
+gcloud compute networks subnets create subnet-useast1 --project=my-learning-368417 --range=10.0.1.0/24 --stack-type=IPV4_ONLY --network=my-custom-vpc --region=us-east1
+
+gcloud compute networks subnets create subnet-europe --project=my-learning-368417 --range=10.0.2.0/24 --stack-type=IPV4_ONLY --network=my-custom-vpc --region=europe-north1
+
+gcloud compute firewall-rules create my-custom-vpc-allow-icmp --project=my-learning-368417 --network=projects/my-learning-368417/global/networks/my-custom-vpc --description=Allows\ ICMP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=icmp
+
+gcloud compute firewall-rules create my-custom-vpc-allow-rdp --project=my-learning-368417 --network=projects/my-learning-368417/global/networks/my-custom-vpc --description=Allows\ RDP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network\ using\ port\ 3389. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=tcp:3389
+
+gcloud compute firewall-rules create my-custom-vpc-allow-ssh --project=my-learning-368417 --network=projects/my-learning-368417/global/networks/my-custom-vpc --description=Allows\ TCP\ connections\ from\ any\ source\ to\ any\ instance\ on\ the\ network\ using\ port\ 22. --direction=INGRESS --priority=65534 --source-ranges=0.0.0.0/0 --action=ALLOW --rules=tcp:22
