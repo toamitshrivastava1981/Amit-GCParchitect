@@ -1,0 +1,15 @@
+
+VPC reation with two subnet in same region
+two VM creation (name public and private)
+public ip need to reserve.
+cloud router creation 
+nat gatway creation in netowrk service
+--Attached public ip 
+--Attached cloud router
+
+ 
+cloud router creation by cloudshell 
+
+gcloud compute routers create natrouter --project=my-learning-368417 --region=asia-east1 --network=cloudnatvpc
+
+
